@@ -11,9 +11,9 @@
             --bg-color: #f3f4f6;
             --card-bg: #ffffff;
             --text-main: #2c3e50;
-            --text-sub: #7f8c8d;
+            --text-sub: #6b7280;
             --primary: #27ae60;
-            --primary-dark: #219150;
+            --primary-light: #d1fae5;
             --line-color: #06C755;
             --alert-bg: #fff5f5;
             --alert-border: #e02424;
@@ -110,88 +110,86 @@
         h2.q-title { font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--primary); }
         p.desc { font-size: 14px; color: var(--text-sub); line-height: 1.7; margin-bottom: 30px; }
 
+        .form-input { 
+            width: 100%; padding: 16px; border: 1px solid #d1d5db; border-radius: 10px; 
+            font-size: 16px; outline: none; transition: border-color 0.2s; 
+            background: #f9fafb; margin-bottom: 10px;
+        }
+        .form-input:focus { border-color: var(--primary); background: #fff; }
+        .unit-label { position: absolute; right: 15px; top: 16px; color: #9ca3af; pointer-events: none;}
+
         .option-btn { background: #fff; border: 1px solid #e2e8f0; padding: 16px; margin-bottom: 10px; width: 100%; text-align: left; font-size: 15px; font-weight: 500; cursor: pointer; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: all 0.3s var(--ease-nurutto); position: relative; overflow: hidden; }
         .option-btn:hover { border-color: var(--primary); box-shadow: 0 5px 15px rgba(39, 174, 96, 0.15); transform: translateY(-2px); }
         .option-btn:active { transform: scale(0.96); background-color: #f0fff4; border-color: var(--primary); }
         .option-btn::after { content: '›'; font-size: 20px; color: #cbd5e0; transition: transform 0.3s var(--ease-nurutto); }
         .option-btn:hover::after { transform: translateX(3px); color: var(--primary); }
 
-        .upload-area { border: 2px dashed #cbd5e0; padding: 30px 20px; text-align: center; cursor: pointer; transition: all 0.3s var(--ease-nurutto); margin-bottom: 20px; background: #f8fafc; border-radius: 12px; color: var(--text-sub); }
+        .upload-area {
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            border: 2px dashed #cbd5e0; padding: 30px 20px; text-align: center;
+            cursor: pointer; transition: all 0.3s var(--ease-nurutto); margin-bottom: 20px;
+            background: #f8fafc; border-radius: 12px; color: var(--text-sub); width: 100%;
+        }
         .upload-area:hover { border-color: var(--primary); background: #f0fff4; }
-        .img-preview { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); animation: popIn 0.4s var(--ease-nurutto); }
+        .upload-area input[type="file"] { display: none; }
+
+        .img-preview { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); animation: popIn 0.4s var(--ease-nurutto); margin: 5px; }
         @keyframes popIn { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
-        .nav-btn { background: var(--primary); color: #fff; border: none; padding: 16px; width: 100%; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3); transition: transform 0.2s var(--ease-nurutto); flex-shrink: 0; }
+        .checkbox-label {
+            display: flex; align-items: center; padding: 14px; 
+            border: 1px solid #e5e7eb; border-radius: 10px; cursor: pointer;
+            transition: all 0.2s; margin-bottom: 10px; background: #fff;
+        }
+        .checkbox-label:hover { background-color: #f9fafb; border-color: var(--primary); }
+        .checkbox-label input[type="checkbox"] { transform: scale(1.3); margin-right: 12px; accent-color: var(--primary); }
+
+        /* ナビゲーションエリア */
+        .nav-area { margin-top: auto; display: flex; flex-direction: column; gap: 15px; }
+        
+        .nav-btn { background: var(--primary); color: #fff; border: none; padding: 16px; width: 100%; font-size: 16px; font-weight: 700; cursor: pointer; border-radius: 12px; box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3); transition: transform 0.2s var(--ease-nurutto); }
         .nav-btn:hover { transform: translateY(-2px); }
         .nav-btn:active { transform: scale(0.97); }
+
+        /* 戻るボタン */
+        .prev-btn {
+            background: transparent; border: none; color: #95a5a6; font-size: 14px;
+            cursor: pointer; text-decoration: underline; width: 100%; text-align: center;
+            padding: 5px;
+        }
+        .prev-btn:hover { color: var(--text-main); }
 
         .result-box { text-align: center; padding: 20px; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid #f0f0f0; }
         .total-price-range { font-family: 'Oswald', sans-serif; font-size: 26px; font-weight: 700; color: var(--text-main); margin-top: 5px; word-break: break-all; line-height: 1.2; }
         
         .special-offer {
-            background: var(--alert-bg);
-            border: 2px solid var(--alert-border);
-            padding: 20px 15px; 
-            border-radius: 16px;
-            margin-bottom: 25px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 10px 20px rgba(224, 36, 36, 0.08);
+            background: var(--alert-bg); border: 2px solid var(--alert-border);
+            padding: 20px 15px; border-radius: 16px; margin-bottom: 25px;
+            text-align: center; position: relative; box-shadow: 0 10px 20px rgba(224, 36, 36, 0.08);
         }
         .special-offer::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 50%; height: 100%;
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
             background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent);
-            transform: skewX(-25deg);
-            animation: shine 3s infinite;
-            pointer-events: none;
-            border-radius: 14px;
+            transform: skewX(-25deg); animation: shine 3s infinite; pointer-events: none; border-radius: 14px;
         }
         @keyframes shine { 100% { left: 200%; } }
 
         .offer-head { color: var(--alert-text); font-size: 16px; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 6px; margin-bottom: 10px; }
         .offer-label { font-size: 13px; color: var(--alert-text); font-weight: 700; margin-bottom: 5px; display: block; }
-        
         .offer-price-display {
-            font-family: 'Oswald', sans-serif;
-            font-size: 28px; 
-            font-weight: 700;
-            color: var(--alert-text);
-            display: block;
-            background: #fff;
-            padding: 15px 10px;
-            border-radius: 8px;
-            margin: 0 auto 15px auto;
-            border: 1px dashed var(--alert-border);
-            line-height: 1.2;
-            width: 100%;
-            word-break: break-all;
+            font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 700; color: var(--alert-text);
+            display: block; background: #fff; padding: 15px 10px; border-radius: 8px; margin: 0 auto 15px auto;
+            border: 1px dashed var(--alert-border); line-height: 1.2; width: 100%; word-break: break-all;
         }
         
         .line-btn {
-            background: var(--line-color);
-            color: #fff;
-            text-decoration: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            padding: 16px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 16px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(6, 199, 85, 0.2);
-            transition: all 0.3s var(--ease-nurutto);
-            position: relative; 
-            z-index: 2;
+            background: var(--line-color); color: #fff; text-decoration: none;
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+            padding: 16px; text-align: center; font-weight: 700; font-size: 16px;
+            border-radius: 12px; box-shadow: 0 4px 10px rgba(6, 199, 85, 0.2);
+            transition: all 0.3s var(--ease-nurutto); position: relative; z-index: 2;
         }
-        .line-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(6, 199, 85, 0.3);
-        }
+        .line-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(6, 199, 85, 0.3); }
         .line-icon { font-size: 20px; }
 
         @media (max-width: 360px) {
@@ -211,15 +209,7 @@
         .breathing-circle { width: 60px; height: 60px; background: var(--primary); border-radius: 50%; animation: breathe 1.5s infinite ease-in-out both; margin-bottom: 20px; }
         @keyframes breathe { 0% { transform: scale(0.8); opacity: 0.5; box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7); } 70% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 20px rgba(39, 174, 96, 0); } 100% { transform: scale(0.8); opacity: 0.5; box-shadow: 0 0 0 0 rgba(39, 174, 96, 0); } }
 
-        /* 画像スタイルを追加 */
-        .comic-img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            display: block;
-        }
+        .comic-img { width: 100%; height: auto; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: block; }
     </style>
 </head>
 <body>
@@ -235,9 +225,7 @@
     <div id="screen-start" class="screen active">
         <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
             <h1>退去費用<br>自己診断ツール</h1>
-            
             <img src="comic.jpg" class="comic-img" alt="退去費用が安くなる漫画">
-            
             <p class="desc">
                 「この傷、いくらかかる？」<br>
                 ガイドラインに基づいた適正価格を<br>
@@ -249,24 +237,12 @@
 
     <div id="screen-question" class="screen">
         <h2 class="q-title" id="q-text">質問</h2>
-        <div id="q-options-container"></div>
-    </div>
-
-    <div id="screen-upload" class="screen">
-        <h2 class="q-title">気になる箇所の写真</h2>
-        <p class="desc">
-            汚れや傷が目立つ場所があれば写真を登録してください。<br>
-            （任意 / 計算の参考として保存されます）
-        </p>
+        <div id="q-content-container"></div>
         
-        <label class="upload-area" for="file-input">
-            <span style="font-size:32px; display:block; margin-bottom:10px; opacity:0.7;">📷</span>
-            <span style="font-weight:bold;">写真をライブラリから選択</span>
-            <input type="file" id="file-input" accept="image/*" multiple onchange="app.handleFiles(this)" style="display:none;">
-        </label>
-        
-        <div id="preview-container" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 20px;"></div>
-        <button class="nav-btn" onclick="app.nextStep()">診断結果を見る</button>
+        <div class="nav-area">
+            <button class="nav-btn" id="next-btn">次へ</button>
+            <button class="prev-btn" id="prev-btn" onclick="app.prevStep()">＜ 前に戻る</button>
+        </div>
     </div>
 
     <div id="screen-loading" class="screen">
@@ -305,7 +281,7 @@
             <table class="breakdown-table" id="breakdown-list"></table>
         </div>
 
-        <div id="result-photos" style="margin-bottom:20px; display:none;">
+        <div id="result-photos-area" style="margin-bottom:20px; display:none;">
             <p style="font-size:12px; font-weight:bold; color:#7f8c8d; margin-bottom:8px;">登録された写真</p>
             <div id="result-photo-container" style="display:flex; gap:8px; overflow-x:auto; padding:5px 0;"></div>
         </div>
@@ -322,124 +298,283 @@
 <script>
 class SimulationApp {
     constructor() {
-        this.currentStep = 0;
+        this.step = 0;
         this.answers = {};
-        this.uploadedImages = [];
+        this.uploadedImages = { q8: [], q9: [], q10: [] };
         
         this.questions = [
+            // Q1 間取り
             {
-                key: 'size',
-                text: "お部屋の広さ・間取りは？",
+                id: 'q1',
+                type: 'select',
+                text: "お部屋の間取りは？",
                 options: [
-                    { label: "1R / 1K (〜25㎡)", base: 35000 },
-                    { label: "1DK / 1LDK (〜40㎡)", base: 50000 },
-                    { label: "2LDK (〜60㎡)", base: 70000 },
-                    { label: "3LDK以上", base: 90000 }
+                    { label: "1R / 1K", val: "1k" },
+                    { label: "1DK / 1LDK", val: "1ldk" },
+                    { label: "2K / 2DK / 2LDK", val: "2ldk" },
+                    { label: "3LDK以上", val: "3ldk" }
                 ]
             },
+            // Q2 平米数
             {
-                key: 'years',
-                text: "居住年数（住んでいた期間）",
+                id: 'q2',
+                type: 'number',
+                text: "お部屋の広さ（平米数）は？",
+                unit: "㎡",
+                placeholder: "例: 25.5"
+            },
+            // Q3 居住年数
+            {
+                id: 'q3',
+                type: 'select_with_input',
+                text: "居住年数は？",
                 options: [
-                    { label: "1年未満", rate: 1.0 },
-                    { label: "1年 〜 3年", rate: 0.8 },
-                    { label: "3年 〜 6年", rate: 0.5 },
-                    { label: "6年以上", rate: 0.2 }
+                    { label: "1年未満", val: 0.5 },
+                    { label: "1年 〜 2年", val: 1.5 },
+                    { label: "2年 〜 4年", val: 3.0 },
+                    { label: "4年以上", val: 'input' } 
                 ]
             },
+            // 旧Q4（ペット）削除により繰り上げ
+            // Q4 浴室
             {
-                key: 'pet',
-                text: "ペットの飼育はありましたか？",
+                id: 'q4',
+                type: 'checkbox',
+                text: "浴室の状態（当てはまるもの）",
                 options: [
-                    { label: "飼育なし", cost: 0 },
-                    { label: "あり（小型犬・猫1匹）", cost: 30000 },
-                    { label: "あり（多頭飼育）", cost: 50000 }
+                    "鏡・扉に水垢がある",
+                    "赤カビ・赤錆がある",
+                    "入浴剤等の色が付着",
+                    "浴室乾燥機の汚れ",
+                    "その他汚れ",
+                    "特になし" // 追加
                 ]
             },
+            // Q5 キッチン
             {
-                key: 'water',
-                text: "水回り（風呂・キッチン）の状態",
-                options: [
-                    { label: "定期的にお掃除していた", cost: 0 },
-                    { label: "少しカビやヌメリがある", cost: 5000 },
-                    { label: "黒カビ・頑固な汚れがある", cost: 25000 }
+                id: 'q5',
+                type: 'checkbox_special',
+                text: "キッチンの状態",
+                checks: ["油汚れが付着", "水垢やカビ", "排水溝のつまり", "特になし"], // 追加
+                radios: [
+                    { name: "stove", opts: ["ガスコンロ", "IH"] },
+                    { name: "grill", opts: ["グリルあり", "グリルなし"] }
                 ]
             },
+            // Q6 洗面台
             {
-                key: 'tobacco',
-                text: "室内での喫煙状況",
-                options: [
-                    { label: "吸わない", cost: 0 },
-                    { label: "換気扇下のみ", cost: 15000 },
-                    { label: "室内で吸っていた", cost: 60000 }
-                ]
+                id: 'q6',
+                type: 'checkbox',
+                text: "洗面台の状態",
+                options: ["水垢やカビ", "鏡の水垢", "その他汚れ", "特になし"] // 追加
             },
+            // 旧Q8（タバコ）削除により繰り上げ
+            // Q7 傷（手入力）
             {
-                key: 'damage',
+                id: 'q7',
+                type: 'text',
                 text: "壁や床の傷について",
-                options: [
-                    { label: "目立つ傷はない", cost: 0 },
-                    { label: "小さな生活傷程度", cost: 0 },
-                    { label: "目立つ傷・穴がある", cost: 35000 }
-                ]
-            }
+                placeholder: "例: リビングの床に引っかき傷がある"
+            },
+            // Q8 写真（ペット・タバコ・その他）
+            { id: 'q8', type: 'photo', text: "ペット・タバコによる傷、<br>その他気になる場所（任意）" },
+            // Q9 写真（見積もり）
+            { id: 'q9', type: 'photo', text: "退去費用の見積書（任意）", desc: "管理会社から届いている場合" },
+            // Q10 写真（チェックシート）
+            { id: 'q10', type: 'photo', text: "入居時チェックシート（任意）", desc: "入居時の傷がわかるもの" }
         ];
     }
 
     start() {
-        this.currentStep = 0;
+        this.step = 0;
         this.answers = {};
-        this.uploadedImages = [];
-        document.getElementById('preview-container').innerHTML = '';
+        this.uploadedImages = { q8: [], q9: [], q10: [] };
         document.getElementById('result-photo-container').innerHTML = '';
         this.showScreen('screen-question');
-        this.renderQuestion();
+        this.renderStep();
     }
 
-    renderQuestion() {
-        const q = this.questions[this.currentStep];
-        document.getElementById('q-text').innerText = `Q${this.currentStep + 1}. ${q.text}`;
-        const container = document.getElementById('q-options-container');
-        container.innerHTML = '';
+    renderStep() {
+        const q = this.questions[this.step];
+        const container = document.getElementById('q-content-container');
+        const title = document.getElementById('q-text');
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
         
-        q.options.forEach(opt => {
-            const btn = document.createElement('div');
-            btn.className = 'option-btn';
-            btn.innerHTML = `<span>${opt.label}</span>`;
-            btn.onclick = () => {
-                setTimeout(() => this.handleAnswer(q.key, opt), 250); 
+        container.innerHTML = '';
+        title.innerHTML = `Q${this.step + 1}. ${q.text}`; // innerHTMLに変更（改行対応）
+        
+        const progress = ((this.step + 1) / this.questions.length) * 100;
+        document.getElementById('progress-bar').style.width = `${progress}%`;
+
+        // 戻るボタンの表示制御
+        prevBtn.style.display = this.step > 0 ? 'block' : 'none';
+
+        // ボタンのイベントリセット
+        const newNextBtn = nextBtn.cloneNode(true);
+        nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
+        const activeNextBtn = document.getElementById('next-btn');
+
+        if (q.type === 'select') {
+            activeNextBtn.style.display = 'none';
+            q.options.forEach(opt => {
+                const btn = document.createElement('div');
+                btn.className = 'option-btn';
+                btn.innerHTML = `<span>${opt.label}</span><span>›</span>`;
+                btn.onclick = () => {
+                    this.answers[q.id] = opt.val;
+                    this.nextStep();
+                };
+                container.appendChild(btn);
+            });
+        } 
+        else if (q.type === 'number') {
+            activeNextBtn.style.display = 'block';
+            activeNextBtn.innerText = '次へ';
+            const wrap = document.createElement('div');
+            wrap.style.position = 'relative';
+            wrap.innerHTML = `
+                <input type="number" id="input-${q.id}" class="form-input" placeholder="${q.placeholder}" inputmode="decimal">
+                <span class="unit-label">${q.unit}</span>
+            `;
+            container.appendChild(wrap);
+            
+            // 既存の値があれば入れる（戻る対策）
+            if (this.answers[q.id]) {
+                document.getElementById(`input-${q.id}`).value = this.answers[q.id];
+            }
+            
+            activeNextBtn.onclick = () => {
+                const val = document.getElementById(`input-${q.id}`).value;
+                if (!val) { alert("数値を入力してください"); return; }
+                this.answers[q.id] = parseFloat(val);
+                this.nextStep();
             };
-            container.appendChild(btn);
-        });
-        this.updateProgress();
-    }
+        }
+        else if (q.type === 'select_with_input') {
+            activeNextBtn.style.display = 'none';
+            q.options.forEach(opt => {
+                const btn = document.createElement('div');
+                btn.className = 'option-btn';
+                btn.innerText = opt.label;
+                btn.onclick = () => {
+                    if (opt.val === 'input') {
+                        container.innerHTML = `
+                            <p style="margin-bottom:10px; font-weight:bold;">居住年数を入力してください</p>
+                            <div style="position:relative; margin-bottom:20px;">
+                                <input type="number" id="input-years-manual" class="form-input" placeholder="例: 5" inputmode="numeric">
+                                <span class="unit-label">年</span>
+                            </div>
+                        `;
+                        activeNextBtn.style.display = 'block';
+                        activeNextBtn.innerText = '次へ';
+                        
+                        if (this.answers[q.id] && typeof this.answers[q.id] === 'number') {
+                             document.getElementById('input-years-manual').value = this.answers[q.id];
+                        }
 
-    handleAnswer(key, value) {
-        this.answers[key] = value;
-        this.nextStep();
-    }
+                        activeNextBtn.onclick = () => {
+                            const val = document.getElementById('input-years-manual').value;
+                            if(val) {
+                                this.answers[q.id] = parseFloat(val);
+                                this.nextStep();
+                            } else {
+                                alert("年数を入力してください");
+                            }
+                        };
+                    } else {
+                        this.answers[q.id] = opt.val;
+                        this.nextStep();
+                    }
+                };
+                container.appendChild(btn);
+            });
+        }
+        else if (q.type === 'checkbox' || q.type === 'checkbox_special') {
+            activeNextBtn.style.display = 'block';
+            activeNextBtn.innerText = '次へ';
+            const items = q.type === 'checkbox' ? q.options : q.checks;
+            
+            // 既存のチェック状態復元用
+            const saved = this.answers[q.id] ? this.answers[q.id].checks : [];
 
-    nextStep() {
-        if (this.currentStep < this.questions.length - 1) {
-            this.currentStep++;
-            this.renderQuestion();
-        } else if (this.currentStep === this.questions.length - 1) {
-            this.currentStep++;
-            this.updateProgress();
-            this.showScreen('screen-upload');
-        } else {
-            this.calcResult();
+            items.forEach(item => {
+                const label = document.createElement('label');
+                label.className = 'checkbox-label';
+                const isChecked = saved.includes(item) ? 'checked' : '';
+                label.innerHTML = `<input type="checkbox" name="${q.id}_check" value="${item}" ${isChecked}>${item}`;
+                container.appendChild(label);
+            });
+            if (q.type === 'checkbox_special') {
+                container.appendChild(document.createElement('hr'));
+                q.radios.forEach(grp => {
+                    const div = document.createElement('div');
+                    div.style.margin = '10px 0';
+                    div.innerHTML = `<div style="font-size:12px; font-weight:bold; margin-bottom:5px;">設備</div>`;
+                    grp.opts.forEach((opt, idx) => {
+                         div.innerHTML += `<label style="margin-right:15px;"><input type="radio" name="${q.id}_${grp.name}" value="${opt}" ${idx===0?'checked':''}> ${opt}</label>`;
+                    });
+                    container.appendChild(div);
+                });
+            }
+            
+            activeNextBtn.onclick = () => {
+                const checked = Array.from(document.querySelectorAll(`input[name="${q.id}_check"]:checked`)).map(c => c.value);
+                this.answers[q.id] = { checks: checked };
+                this.nextStep();
+            };
+        }
+        else if (q.type === 'text') {
+            activeNextBtn.style.display = 'block';
+            activeNextBtn.innerText = '次へ';
+            const savedVal = this.answers[q.id] || '';
+            container.innerHTML = `<textarea id="input-${q.id}" class="form-input" rows="4" placeholder="${q.placeholder}">${savedVal}</textarea>`;
+            
+            activeNextBtn.onclick = () => {
+                const val = document.getElementById(`input-${q.id}`).value;
+                this.answers[q.id] = val;
+                this.nextStep();
+            };
+        }
+        else if (q.type === 'photo') {
+            activeNextBtn.style.display = 'block';
+            activeNextBtn.innerText = this.step === this.questions.length - 1 ? '診断する' : '次へ（スキップ可）';
+            
+            if (q.desc) container.innerHTML += `<p style="font-size:13px; color:#666; margin-bottom:10px;">${q.desc}</p>`;
+            
+            container.innerHTML += `
+                <label class="upload-area">
+                    <span style="font-size:32px; display:block; margin-bottom:10px; opacity:0.7;">📷</span>
+                    <span style="font-weight:bold;">写真をライブラリから選択</span>
+                    <input type="file" accept="image/*" multiple onchange="app.handlePhoto(this, '${q.id}')">
+                </label>
+                <div id="preview-${q.id}" style="display:flex; gap:10px; flex-wrap:wrap;"></div>
+            `;
+            
+            activeNextBtn.onclick = () => {
+                this.nextStep();
+            };
+            
+            if (this.uploadedImages[q.id] && this.uploadedImages[q.id].length > 0) {
+                const previewContainer = document.getElementById(`preview-${q.id}`);
+                this.uploadedImages[q.id].forEach(src => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.className = 'img-preview';
+                    previewContainer.appendChild(img);
+                });
+            }
         }
     }
 
-    handleFiles(input) {
+    handlePhoto(input, qId) {
         const files = input.files;
-        const container = document.getElementById('preview-container');
-        if (files && files.length > 0) {
+        const container = document.getElementById(`preview-${qId}`);
+        if (files) {
             Array.from(files).forEach(file => {
                 const reader = new FileReader();
                 reader.onload = (e) => {
-                    this.uploadedImages.push(e.target.result);
+                    this.uploadedImages[qId].push(e.target.result);
                     const img = document.createElement('img');
                     img.src = e.target.result;
                     img.className = 'img-preview';
@@ -450,10 +585,20 @@ class SimulationApp {
         }
     }
 
-    updateProgress() {
-        const totalSteps = this.questions.length + 1;
-        const progress = ((this.currentStep + 1) / totalSteps) * 100;
-        document.getElementById('progress-bar').style.width = `${progress}%`;
+    nextStep() {
+        if (this.step < this.questions.length - 1) {
+            this.step++;
+            this.renderStep();
+        } else {
+            this.calcResult();
+        }
+    }
+
+    prevStep() {
+        if (this.step > 0) {
+            this.step--;
+            this.renderStep();
+        }
     }
 
     showScreen(id) {
@@ -472,62 +617,75 @@ class SimulationApp {
 
     calcResult() {
         this.showScreen('screen-loading');
-
+        
         setTimeout(() => {
             const a = this.answers;
             
-            const base = a.size.base;
-            const rate = a.years.rate; 
-            const petCost = a.pet.cost;
-            const waterCost = a.water.cost;
-            const damageBase = a.tobacco.cost + a.damage.cost;
-            const damageTotal = Math.floor(damageBase * rate); 
+            // --- 計算ロジック ---
+            const size = a.q2 || 20;
+            const baseCost = Math.floor(size * 1200);
 
-            const totalMin = Math.floor(base + petCost + waterCost + damageTotal);
+            const years = a.q3 || 1;
+            let burdenRate = 1.0 - (years / 6.0);
+            if (burdenRate < 0.1) burdenRate = 0.1;
+
+            let waterCost = 0;
+            // "特になし" は加算対象外
+            const isNotNone = (checks) => checks && checks.length > 0 && !checks.includes("特になし");
+
+            if (a.q4 && isNotNone(a.q4.checks)) waterCost += 5000; // 浴室
+            if (a.q5 && isNotNone(a.q5.checks)) waterCost += 5000; // キッチン
+            if (a.q6 && isNotNone(a.q6.checks)) waterCost += 3000; // 洗面
+
+            // ペット・タバコ質問削除に伴い 0円
+            const petCost = 0; 
+            const tobaccoCost = 0;
+
+            const totalMin = baseCost + waterCost + petCost + tobaccoCost;
             const totalMax = Math.floor(totalMin * 1.25);
 
-            let offerMinRaw = totalMin - 40000;
-            let offerMaxRaw = totalMin - 20000;
-            const minLimit = 15000; 
-            if (offerMinRaw < minLimit) offerMinRaw = minLimit;
-            if (offerMaxRaw <= offerMinRaw) offerMaxRaw = offerMinRaw + 5000;
+            let offerMin = totalMin - 40000;
+            let offerMax = totalMin - 20000;
+            if(offerMin < 15000) offerMin = 15000;
+            if(offerMax <= offerMin) offerMax = offerMin + 5000;
 
+            // --- 結果表示 ---
             document.getElementById('result-price-range').innerHTML = 
                 `${totalMin.toLocaleString()} <span style="font-size:16px">円</span> 〜 ${totalMax.toLocaleString()} <span style="font-size:16px">円</span>`;
+            
+            document.getElementById('offer-price').innerText = 
+                `${offerMin.toLocaleString()}円 〜 ${offerMax.toLocaleString()}円`;
 
             const table = document.getElementById('breakdown-list');
-            let tableHTML = `<tr><td>基本クリーニング</td><td style="font-weight:bold">${base.toLocaleString()}円</td></tr>`;
+            let html = `<tr><td>基本クリーニング (${size}㎡)</td><td style="font-weight:bold">${baseCost.toLocaleString()}円</td></tr>`;
+            if (waterCost > 0) html += `<tr><td>水回り特別清掃</td><td style="font-weight:bold">${waterCost.toLocaleString()}円</td></tr>`;
             
-            if(petCost > 0) tableHTML += `<tr><td>ペット消毒</td><td style="font-weight:bold">${petCost.toLocaleString()}円</td></tr>`;
-            if(waterCost > 0) tableHTML += `<tr><td>水回り清掃</td><td style="font-weight:bold">${waterCost.toLocaleString()}円</td></tr>`;
-            if(damageTotal > 0) tableHTML += `<tr><td>修繕費(減価償却済)</td><td style="font-weight:bold">${damageTotal.toLocaleString()}円</td></tr>`;
-            if(petCost === 0 && waterCost === 0 && damageTotal === 0) {
-                 tableHTML += `<tr><td>追加費用</td><td style="color:#aaa">なし</td></tr>`;
-            }
-            table.innerHTML = tableHTML;
+            // 傷の入力があれば備考として表示
+            if (a.q7) html += `<tr><td colspan="2" style="font-size:11px; color:#666; padding-top:10px;">※申告のあった傷（${a.q7}）は別途修繕費がかかる可能性があります。</td></tr>`;
+            
+            table.innerHTML = html;
 
-            const photoArea = document.getElementById('result-photos');
+            // 写真表示
+            const photoArea = document.getElementById('result-photos-area');
             const photoContainer = document.getElementById('result-photo-container');
-            if (this.uploadedImages.length > 0) {
+            const allPhotos = [...this.uploadedImages.q8, ...this.uploadedImages.q9, ...this.uploadedImages.q10];
+            
+            if (allPhotos.length > 0) {
                 photoArea.style.display = 'block';
                 photoContainer.innerHTML = '';
-                this.uploadedImages.forEach(src => {
+                allPhotos.forEach(src => {
                     const img = document.createElement('img');
                     img.src = src;
-                    img.style.height = '60px';
-                    img.style.borderRadius = '6px';
-                    img.style.flexShrink = '0';
+                    img.className = 'img-preview';
                     photoContainer.appendChild(img);
                 });
             } else {
                 photoArea.style.display = 'none';
             }
 
-            document.getElementById('offer-price').innerText = 
-                `${offerMinRaw.toLocaleString()}円 〜 ${offerMaxRaw.toLocaleString()}円`;
-
             this.showScreen('screen-result');
-        }, 1800);
+
+        }, 2000);
     }
 
     restart() {
